@@ -1,29 +1,24 @@
-
-
-
-    
 from allWords_final import allWords
 # allWords = ['seven', 'world', 'about', 'again', 'heart', 'pizza', 'water', 'happy', 'hpppp', 'hpppy', 'sixty', 'board', 'month', 'angel', 'death', 'green', 'music', 'fifty', 'three', 'party', 'piano', 'mouth', 'woman', 'ruple', 'sugar']
 # allWords = ['abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy']
-# allWords = ['xxxxx', 'rxxxx', 'rrxxx', 'rrrxx', 'rrrrx', 'rrrrr']
+# allWords = ['smirk']
 
-word_list = allWords.copy()
-
-
+word_list = allWords.copy() ## Makes a copy of all words and puts it into loop.
 
 inputWord = ''
+
+output_list = []
+output_list_a = []
+
+# ---------------------------------- START OF LOOP
+
 while inputWord != 'exit':
 
-    output_list = []
-    output_list_a = []
-
-
-    inputWord, noLetter = input('words noletters: ').split() 
-    # inputWord = '*U*i*' #DOES NOT LIKE *skiL* Returns empty list... FUCK! DOUBLE LETTER ISSUE/ STAR ISSUE? DOES NOT LIKE *snaE (no double letters) either.
-    # noLetter = 'raton'
-
-    
-
+    inputWord = input('Upper, Lower or Wild i.e. *xXx* : ')
+    if inputWord == 'exit': #Forces immediate EXIT without going to second input.
+        break
+    noLetter = input('Not these letters : ')
+     
     iCounter = 0 # I COUNTER
 
     for word in word_list: # x_list, x_list equals survivors(iteration)
@@ -33,6 +28,8 @@ while inputWord != 'exit':
             xLower = 0 # counts LOWER only
             xDouble = 0
             noLetCount = 0
+            
+# ---------------------------------- START NOLETTER QUALIFIER  # Needs to be condensed. 
             
             for letter in noLetter: #Qualifies noLetter and Changes to noLetAddStar
                 if len(noLetter) <= 5: 
@@ -59,12 +56,14 @@ while inputWord != 'exit':
                 elif (noLetAddStar[4]) in word:
                     noLetCount += 1
                 else: pass
-                                
+
+# ---------------------------------- END NOLETTER QUALIFIER                                
                             
             for letter in inputWord:    
                             
                 if letter != '*': # CHECKS INPUT AND WORD FOR DOUBLE LETTERS
-                    j = inputWord.count(letter)
+                    h = inputWord.lower() #MAKE EVERTHING LOWER FOR DOUBLE COMPARISON
+                    j = h.count(letter) #H INSTEAD OF INPUTWORD (NOW LOWER)
                     k = word.count(letter)
                     # print(i)
 
@@ -88,26 +87,37 @@ while inputWord != 'exit':
                     xCounter += 1
                 else: pass
                 
-                if letter.isupper() and (inputWord[xCounter].lower()) == word[xCounter]: #CHECKS UPPER CASER LETTERS FOR MATCHING POSITION
+                if letter.isupper() and (inputWord[xCounter].lower()) == word[xCounter]: #CHECKS UPPERCASE LETTERS FOR MATCHING POSITION
                     xCounter += 1
                 else: pass
                 
                 if xCounter == 5 and xLower == 0 and j == k and noLetCount == 0: #COUNTS THE COUNTERS
                     
+                    
+
                     output_list_a.append(word) #MAKES THE NEW LIST
                     for i in output_list_a: 
                         if i not in output_list: 
                             output_list.append(i)
-                    
+                            
             iCounter = iCounter + 1 #COUNTS LETTERS TO GET WORD COUNT (LETTERS/5)
-            
-            
-        #TEST
-        print('word#:', round(iCounter/5), '    j:', j, '   k:', k, '   Double?:', xDouble, '   xCounter=5:', xCounter, '   xLower=0:', xLower, '   noLetCount:', noLetCount)
-    
-                
 
-    print('S1:', output_list)
+        #TEST
+        # print('REPORT OUT --- word#:', round(iCounter), '    j:', j, '   k:', k, '   Double?:', xDouble, '   xCounter=5:', xCounter, '   xLower=0:', xLower, '   noLetCount:', noLetCount)
+
+    # print('S1:', output_list)
+    
+    word_list = output_list.copy()
+    
+    output_list = []
+    output_list_a = []
+    
+    print('Last Line', word_list)
+    
+    
+    
+    
+    
 
 
 
