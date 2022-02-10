@@ -1,4 +1,4 @@
-from allWords_final import allWords
+from allWords_finalWM import allWords
 # allWords = ['seven', 'world', 'about', 'again', 'heart', 'pizza', 'water', 'happy', 'hpppp', 'hpppy', 'sixty', 'board', 'month', 'angel', 'death', 'green', 'music', 'fifty', 'three', 'party', 'piano', 'mouth', 'woman', 'ruple', 'sugar']
 # allWords = ['abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy']
 # allWords = ['smirk']
