@@ -1,4 +1,5 @@
-from allWords_finalWM import allWords
+from allWords_final import allWords # Original
+# from allWords_finalWM import allWords
 # allWords = ['seven', 'world', 'about', 'again', 'heart', 'pizza', 'water', 'happy', 'hpppp', 'hpppy', 'sixty', 'board', 'month', 'angel', 'death', 'green', 'music', 'fifty', 'three', 'party', 'piano', 'mouth', 'woman', 'ruple', 'sugar']
 # allWords = ['abcde', 'fghij', 'klmno', 'pqrst', 'uvwxy']
 # allWords = ['smirk']
@@ -10,13 +11,19 @@ inputWord = ''
 output_list = []
 output_list_a = []
 
+instructions = ('\n1. The word you enter must be 5 characters long. \n2. For CORRECT letters in the INCORRECT position; enter the letter in it\'s lower case form: "a". \n3. For CORRECT letters in the CORRECT position; enter the letter in it\'s upper case form: "A". \n4. For letters that are COMPLETELY INCORRECT enter a "*" in the position as a wildcard. \n5. Remember to type in unused or dead letters into the secondary "Not these letters :" field.\nEXAMPLE: *aB*c \n \nGood Luck!\n')
+
 # ---------------------------------- START OF LOOP
 
 while inputWord != 'exit':
-
-    inputWord = input('Upper, Lower or Wild i.e. *xXx* : ')
+    # print('\nCharacters must be uppercase, lowercase or * for wildcards. \nEnter "help" for more information.\nEnter "exit" to close program.\n')
+    inputWord = input('\nEnter help/exit or - Enter Word: ')
     if inputWord == 'exit': #Forces immediate EXIT without going to second input.
         break
+    elif inputWord == 'help':
+        print(instructions)
+        continue
+    
     noLetter = input('Not these letters : ')
      
     iCounter = 0 # I COUNTER
@@ -112,8 +119,15 @@ while inputWord != 'exit':
     output_list = []
     output_list_a = []
     
-    print('Last Line', word_list)
+    print('\nPossible words are:\n')
     
+    for word in range(len(word_list)):
+        print(word_list[word], end = ' ')
+    
+    if len(word_list) == 0:
+        # print('EXIT')
+        break
+
     
     
     
